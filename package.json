@@ -1,0 +1,24 @@
+{
+  "name": "express-practice",
+  "version": "1.0.0",
+  "description": "express practice",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node --env-file=.env server.js",
+    "dev": "node --watch --watch-preserve-output --env-file=.env server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Liene31/express-practice.git"
+  },
+  "author": "Liene",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Liene31/express-practice/issues"
+  },
+  "homepage": "https://github.com/Liene31/express-practice#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
