@@ -46,8 +46,48 @@ export const taskController = {
 
   update: (req, res) => {
     const taskId = parseInt(req.params.id);
+    const taskBody = req.body;
     //first check if the task by ID exists
     const task = taskService.findById(taskId);
-    console.log(task);
+
+    if (!task) {
+      res
+        .status(404)
+        .json({ status: 404, message: `task with id ${taskId} not found` });
+    } else {
+      const updatedTask = taskService.update(taskId, taskBody);
+      res.status(200).json(updatedTask);
+    }
+  },
+
+  updateStatus: (req, res) => {
+    const taskId = parseInt(req.params.id);
+    const taskBody = req.body.isDone;
+    const task = taskService.findById(taskId);
+
+    if (!task) {
+      res
+        .status(404)
+        .json({ status: 404, message: `task with id ${taskId} not found` });
+    } else {
+      const updatedTask = taskService.updateStatus(taskId, taskBody);
+      res.status(200).json(updatedTask);
+    }
+  },
+
+  delete: (req, res) => {
+    const taskId = parseInt(req.params.id);
+    const task = taskService.findById(taskId);
+
+    if (!task) {
+      res
+        .status(404)
+        .json({ status: 404, message: `task with id ${taskId} not found` });
+    }
+
+    const isDeleted = taskService.delete(taskId);
+    if (isDeleted) {
+      res.sendStatus(204);
+    }
   },
 };

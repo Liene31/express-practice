@@ -12,3 +12,7 @@ taskRouter.get("/priority/:status", taskController.getByPriority);
 taskRouter.post("/", taskController.insert);
 
 taskRouter.put("/:id", taskController.update);
+
+taskRouter.patch("/:id", taskController.updateStatus);
+
+taskRouter.delete("/:id", taskController.delete);
